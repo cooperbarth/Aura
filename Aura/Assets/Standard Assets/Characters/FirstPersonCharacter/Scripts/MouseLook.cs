@@ -7,14 +7,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class MouseLook
     {
-        public float XSensitivity = 3f;
-        public float YSensitivity = 3f;
-        public bool clampHorizontalRotation = false;
-        public bool clampVerticalRotation = false;
+        public float XSensitivity = 5f;
+        public float YSensitivity = 5f;
+        public bool clampVerticalRotation = true;
         public float MinimumX = -90F;
         public float MaximumX = 90F;
-        public float MinimumY = 90F;
-        public float MaximumY = 90F;
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
@@ -28,7 +25,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
         }
-
 
         public void LookRotation(Transform character, Transform camera)
         {
