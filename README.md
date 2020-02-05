@@ -1,2 +1,3 @@
 # Aura
-¯\_(ツ)_/¯
+
+An ambisonic VR experience.
