@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
 
     public GameObject player;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         transform.position = player.transform.position;
         transform.rotation = player.transform.rotation;
     }
+
 }

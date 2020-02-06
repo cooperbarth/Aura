@@ -8,15 +8,15 @@ public class AuraDetach : MonoBehaviour
     public GameObject character;
 
     private bool attached = true;
-    private FirstPersonController auraController;
     private FirstPersonController playerController;
     private FollowPlayer follow;
+    private MeshRenderer render;
 
     private void Start()
     {
-        auraController = aura.GetComponent<FirstPersonController>();
         follow = aura.GetComponent<FollowPlayer>();
         playerController = character.GetComponent<FirstPersonController>();
+        render = aura.GetComponent<MeshRenderer>();
     }
 
     void Update()
@@ -28,15 +28,23 @@ public class AuraDetach : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (!attached)
+            if (attached)
             {
-                aura.transform.position = character.transform.position;
-                aura.transform.rotation = character.transform.rotation;
+                playerController.m_JumpSpeed = 0;
+                playerController.m_RunSpeed = 0;
+                playerController.m_WalkSpeed = 0;
             }
+            else
+            {
+                playerController.m_JumpSpeed = 10;
+                playerController.m_RunSpeed = 8;
+                playerController.m_WalkSpeed = 5;
+            }
+            aura.transform.position = character.transform.position;
+            aura.transform.rotation = character.transform.rotation;
             attached = !attached;
-            auraController.enabled = !auraController.enabled;
             follow.enabled = !follow.enabled;
-            playerController.enabled = !playerController.enabled;
+            render.enabled = !render.enabled;
         }
     }
 
