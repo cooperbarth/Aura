@@ -1,3 +1,3 @@
 # Aura
 
-An ambisonic VR experience.
+An out-of-body ambisonic experience.
