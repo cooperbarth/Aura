@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Moveable : MonoBehaviour
 {
@@ -8,6 +6,8 @@ public class Moveable : MonoBehaviour
     public float delta_y;
     public float delta_z;
     public float moveSpeed = 1.0f;
+    public GameObject player;
+    public float interactDistance = -1.0f;
 
     private bool moving = false;
     private bool open = false;
@@ -31,6 +31,11 @@ public class Moveable : MonoBehaviour
     private void OnMouseDown()
     {
         if (open || moving) { return; }
+        Vector3 a = player.transform.position;
+        Vector3 b = transform.position;
+        Vector3 d = new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
+
+        if (interactDistance > 0 && d.magnitude > interactDistance) { return; }
         moving = true;
 
         // Calculate ending position
