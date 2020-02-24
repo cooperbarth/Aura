@@ -5,11 +5,13 @@ public class SoundOnClick : MonoBehaviour
     public new AudioSource audio;
     public GameObject player;
     public float interactDistance = -1.0f;
+    public bool once = true;
+
     private bool played = false;
 
     private void OnMouseDown()
     {
-        if (played) { return; }
+        if (once && played) { return; }
 
         Vector3 a = player.transform.position;
         Vector3 b = transform.position;

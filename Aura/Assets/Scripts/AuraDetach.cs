@@ -12,6 +12,10 @@ public class AuraDetach : MonoBehaviour
     private FollowPlayer follow;
     private MeshRenderer render;
 
+    private float prevJumpSpeed;
+    private float prevRunSpeed;
+    private float prevWalkSpeed;
+
     private void Start()
     {
         follow = aura.GetComponent<FollowPlayer>();
@@ -30,15 +34,19 @@ public class AuraDetach : MonoBehaviour
         {
             if (attached)
             {
+                prevJumpSpeed = playerController.m_JumpSpeed;
+                prevRunSpeed = playerController.m_RunSpeed;
+                prevWalkSpeed = playerController.m_WalkSpeed;
+
                 playerController.m_JumpSpeed = 0;
                 playerController.m_RunSpeed = 0;
                 playerController.m_WalkSpeed = 0;
             }
             else
             {
-                playerController.m_JumpSpeed = 10;
-                playerController.m_RunSpeed = 8;
-                playerController.m_WalkSpeed = 5;
+                playerController.m_JumpSpeed = prevJumpSpeed;
+                playerController.m_RunSpeed = prevRunSpeed;
+                playerController.m_WalkSpeed = prevWalkSpeed;
             }
             aura.transform.position = character.transform.position;
             aura.transform.rotation = character.transform.rotation;
