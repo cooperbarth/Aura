@@ -6,6 +6,7 @@ public class AuraDetach : MonoBehaviour
 
     public GameObject aura;
     public GameObject character;
+    public new bool enabled = true;
 
     private bool attached = true;
     private FirstPersonController playerController;
@@ -30,7 +31,7 @@ public class AuraDetach : MonoBehaviour
 
     void ProcessInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (enabled && Input.GetKeyDown(KeyCode.E))
         {
             if (attached)
             {
