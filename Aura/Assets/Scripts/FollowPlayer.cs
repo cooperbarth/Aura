@@ -4,6 +4,7 @@ public class FollowPlayer : MonoBehaviour
 {
 
     public GameObject player;
+    public bool rotationEnabled = true;
 
     void LateUpdate()
     {
