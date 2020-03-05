@@ -15,10 +15,10 @@ public class Moveable : MonoBehaviour
     private bool moved = false;
     private Vector3 target;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!moving) { return; }
-        float step = moveSpeed * Time.deltaTime;
+        float step = moveSpeed * Time.fixedDeltaTime;
         moveObject.transform.position = Vector3.MoveTowards(
                                                  moveObject.transform.position,
                                                  target,

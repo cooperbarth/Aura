@@ -13,7 +13,7 @@ public class MoveFinalPlatform : Action
     private bool moving = false;
     private Vector3 target;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!moving) { return; }
         float step = moveSpeed * Time.deltaTime;
@@ -25,6 +25,7 @@ public class MoveFinalPlatform : Action
         if (Vector3.Distance(obj.transform.position, target) < 0.001f)
         {
             moving = false;
+            Cease();
         }
     }
 
@@ -40,6 +41,11 @@ public class MoveFinalPlatform : Action
         target.x += delta_x;
         target.y += delta_y;
         target.z += delta_z;
+    }
+
+    public override void Cease()
+    {
+        Application.Quit();
     }
 
     public void ActivateObjects()
