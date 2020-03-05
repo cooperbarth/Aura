@@ -3,7 +3,9 @@
 public class SequenceTrigger : MonoBehaviour
 {
     public OnClickSequenceSend[] triggers;
+    public Action action;
     public bool once = true;
+    public AudioSource failureSound;
 
     // private readonly int[] correct = new int[] { 0, 1, 0, 2, 0, 1, 0, 1, 2, 1, 0 };
     private readonly int[] correct = new int[] { 0, 1, 2 };
@@ -37,8 +39,11 @@ public class SequenceTrigger : MonoBehaviour
                 else  // Incorrect guess
                 {
                     sequence = new int[correct.Length];
-                    currentIndex = 0;
-                    PlaySound();
+                    if (currentIndex > 0)
+                    {
+                        currentIndex = 0;
+                        PlaySound();
+                    }
                 }
                 break;
             }
@@ -47,12 +52,11 @@ public class SequenceTrigger : MonoBehaviour
 
     private void PlaySound()
     {
-        // TODO: Implement this
-        print("darn!");
+        failureSound.Play(0);
     }
 
     private void PerformAction()
     {
-        print("we did it!");
+        action.Trigger();
     }
 }
