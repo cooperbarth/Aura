@@ -13,7 +13,6 @@ public class PlayMusicOnTrigger : MonoBehaviour
     {
         if (!(once && introPlayed))
         {
-            print("hewwo");
             intro.Play(0);
             introPlayed = true;
         }

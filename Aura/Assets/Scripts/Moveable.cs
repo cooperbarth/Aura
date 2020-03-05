@@ -7,30 +7,33 @@ public class Moveable : MonoBehaviour
     public float delta_z;
     public float moveSpeed = 1.0f;
     public GameObject player;
+    public GameObject moveObject;
     public float interactDistance = -1.0f;
+    public bool once = false;
 
     private bool moving = false;
-    private bool open = false;
+    private bool moved = false;
     private Vector3 target;
 
     private void Update()
     {
         if (!moving) { return; }
         float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position,
+        moveObject.transform.position = Vector3.MoveTowards(
+                                                 moveObject.transform.position,
                                                  target,
                                                  step);
 
-        if (Vector3.Distance(transform.position, target) < 0.001f)
+        if (Vector3.Distance(moveObject.transform.position, target) < 0.001f)
         {
             moving = false;
-            open = true;
+            moved = true;
         }
     }
 
     private void OnMouseDown()
     {
-        if (open || moving) { return; }
+        if (moving || (once && moved)) { return; }
         Vector3 a = player.transform.position;
         Vector3 b = transform.position;
         Vector3 d = new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
@@ -39,7 +42,7 @@ public class Moveable : MonoBehaviour
         moving = true;
 
         // Calculate ending position
-        target = transform.position;
+        target = moveObject.transform.position;
         target.x += delta_x;
         target.y += delta_y;
         target.z += delta_z;

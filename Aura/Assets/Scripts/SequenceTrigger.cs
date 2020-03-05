@@ -1,0 +1,58 @@
+﻿using UnityEngine;
+
+public class SequenceTrigger : MonoBehaviour
+{
+    public OnClickSequenceSend[] triggers;
+    public bool once = true;
+
+    // private readonly int[] correct = new int[] { 0, 1, 0, 2, 0, 1, 0, 1, 2, 1, 0 };
+    private readonly int[] correct = new int[] { 0, 1, 2 };
+    private int[] sequence;
+    private int currentIndex = 0;
+    private bool completed = false;
+
+    private void Start()
+    {
+        sequence = new int[correct.Length];
+    }
+
+    public void Send(int senderId)
+    {
+        if (once && completed) { return; }
+        foreach (OnClickSequenceSend trigger in triggers)
+        {
+            int _id = trigger._id;
+            if (_id == senderId)
+            {
+                if (correct[currentIndex] == _id)  // Correct guess
+                {
+                    sequence[currentIndex] = _id;
+                    currentIndex++;
+                    if (currentIndex == correct.Length)
+                    {
+                        completed = true;
+                        PerformAction();
+                    }
+                }
+                else  // Incorrect guess
+                {
+                    sequence = new int[correct.Length];
+                    currentIndex = 0;
+                    PlaySound();
+                }
+                break;
+            }
+        }
+    }
+
+    private void PlaySound()
+    {
+        // TODO: Implement this
+        print("darn!");
+    }
+
+    private void PerformAction()
+    {
+        print("we did it!");
+    }
+}
