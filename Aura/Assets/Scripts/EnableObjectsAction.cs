@@ -22,5 +22,6 @@ public class EnableObjectsAction : Action
         {
             obj.SetActive(true);
         }
+        onCompletion();
     }
 }

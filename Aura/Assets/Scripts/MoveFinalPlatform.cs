@@ -4,13 +4,14 @@ public class MoveFinalPlatform : MoveAction
 {
     public GameObject obj;
     public GameObject[] objectsToActivate;
+    public AudioSource finalVoiceover;
 
     private bool activated = false;
 
     private void FixedUpdate()
     {
         if (!moving) { return; }
-        float step = moveSpeed * Time.deltaTime;
+        float step = moveSpeed * Time.fixedDeltaTime;
         
         obj.transform.position = Vector3.MoveTowards(obj.transform.position,
                                                     target,
@@ -35,6 +36,9 @@ public class MoveFinalPlatform : MoveAction
         target.x += delta_x;
         target.y += delta_y;
         target.z += delta_z;
+
+        // Play final Voiceover
+        finalVoiceover.Play(2000);
     }
 
     public override void Cease()
