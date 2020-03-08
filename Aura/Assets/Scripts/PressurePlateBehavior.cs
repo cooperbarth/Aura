@@ -22,7 +22,6 @@ public class PressurePlateBehavior : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
-        print("hello");
         numObjectsTriggered--;
         if (numObjectsTriggered == 0)
         {
