@@ -20,9 +20,9 @@ public class TrafficLight : MonoBehaviour
         while (true)
         {
             renderer.material = materials[0];
-            await Task.Delay(Convert.ToInt32(10000));
+            await Task.Delay(Convert.ToInt32(4000));
             renderer.material = materials[1];
-            await Task.Delay(Convert.ToInt32(3000));
+            await Task.Delay(Convert.ToInt32(1500));
             renderer.material = materials[2];
             RotatePlatforms(true);
             await Task.Delay(Convert.ToInt32(500));
