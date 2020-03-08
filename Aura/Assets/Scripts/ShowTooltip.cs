@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShowTooltip : MonoBehaviour
 {
     public GameObject text;
-    public float waitTimeSeconds = 5f;
+    public float waitTimeSeconds = 3f;
     public bool once = true;
 
     private bool shown = false;

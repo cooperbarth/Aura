@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 
-public class MoveFinalPlatform : Action
+public class MoveFinalPlatform : MoveAction
 {
-    public float delta_x;
-    public float delta_y;
-    public float delta_z;
-    public float moveSpeed = 1.0f;
     public GameObject obj;
     public GameObject[] objectsToActivate;
 
     private bool activated = false;
-    private bool moving = false;
-    private Vector3 target;
 
     private void FixedUpdate()
     {
@@ -19,13 +13,13 @@ public class MoveFinalPlatform : Action
         float step = moveSpeed * Time.deltaTime;
         
         obj.transform.position = Vector3.MoveTowards(obj.transform.position,
-                                                 target,
-                                                 step);
+                                                    target,
+                                                    step);
 
         if (Vector3.Distance(obj.transform.position, target) < 0.001f)
         {
-            moving = false;
             Cease();
+            onCompletion();
         }
     }
 
@@ -44,6 +38,11 @@ public class MoveFinalPlatform : Action
     }
 
     public override void Cease()
+    {
+        moving = false;
+    }
+
+    public override void onCompletion()
     {
         Application.Quit();
     }

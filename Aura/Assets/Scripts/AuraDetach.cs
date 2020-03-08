@@ -33,7 +33,7 @@ public class AuraDetach : MonoBehaviour
         render.enabled = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (enabled)
         {
@@ -45,8 +45,8 @@ public class AuraDetach : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && !attached)
         {
-            aura.transform.position = character.transform.position;
-            aura.transform.rotation = character.transform.rotation;
+            RecallAura();
+            playerHasControl = true;
             ToggleAttached();
             TogglePlayer(true);
             ToggleAura(false);
@@ -107,6 +107,16 @@ public class AuraDetach : MonoBehaviour
         
     }
 
-    
+    // HACK: We move the Aura instead of teleporting it so that OnTriggerExit()
+    //       can be correctly fired
+    private void RecallAura()
+    {
+        Vector3 target = character.transform.position;
+        float step = 1000 * Time.fixedDeltaTime;
+        aura.transform.position = Vector3.MoveTowards(aura.transform.position,
+                                                 target,
+                                                 step);
+        aura.transform.rotation = character.transform.rotation;
+    }
 
 }
