@@ -93,6 +93,7 @@ public class AuraDetach : MonoBehaviour
             playerController.m_JumpSpeed = prevJumpSpeedPlayer;
             playerController.m_RunSpeed = prevRunSpeedPlayer;
             playerController.m_WalkSpeed = prevWalkSpeedPlayer;
+            playerController.m_UseHeadBob = true;
         }
         else
         {
@@ -102,7 +103,8 @@ public class AuraDetach : MonoBehaviour
 
             playerController.m_JumpSpeed = 0;
             playerController.m_RunSpeed = 0;
-            playerController.m_WalkSpeed = 0; 
+            playerController.m_WalkSpeed = 0;
+            playerController.m_UseHeadBob = false;
         }
         
     }
