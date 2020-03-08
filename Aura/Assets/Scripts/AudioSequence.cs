@@ -4,6 +4,7 @@ public class AudioSequence : MonoBehaviour
 {
     public AudioAction[] audioActions;
     public Action[] completionActions;
+    public AudioSource fail;
 
     private bool completed = false;
     private int currElement = 0;
@@ -12,7 +13,7 @@ public class AudioSequence : MonoBehaviour
     public void Cease()
     {
         currElement = 0;
-        // Play bad sound
+        fail.Play(0);
     }
 
     public void OnCompletion()
