@@ -28,12 +28,10 @@ public class MoveAction : Action
                                                  step);
 
         if (Vector3.Distance(transform.position, target) < 0.001f)
-        {
-            print(transform.position);
+        
             moving = false;
             moved = true;
         }
-    }
 
     override public void Trigger()
     {
