@@ -29,6 +29,7 @@ public class MoveAction : Action
 
         if (Vector3.Distance(transform.position, target) < 0.001f)
         {
+            print(transform.position);
             moving = false;
             moved = true;
         }
