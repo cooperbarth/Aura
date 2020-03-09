@@ -12,6 +12,7 @@ public class IntroSequence : MonoBehaviour
     public AudioSource[] externals;
 
     public AudioSource intro;
+    public AudioSource music;
     public float startTimeSeconds = 2f;
     public float visibleTimeSeconds = 3f;
     public float waitTimeSeconds = 5f;
@@ -21,13 +22,15 @@ public class IntroSequence : MonoBehaviour
     void Start()
     {
         Toggle(false);
-        intro.PlayDelayed(Convert.ToInt32(startTimeSeconds));
+        music.Play();
+        intro.PlayDelayed(1);
     }
 
     async void Update()
     {
         if (introDone || intro.isPlaying) { return; }
         introDone = true;
+        await Task.Delay(1500);
         Toggle(true);
 
         int startTime = Convert.ToInt32(startTimeSeconds * 1000);
