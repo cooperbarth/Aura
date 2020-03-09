@@ -4,6 +4,7 @@ public class PlayAudioOnTrigger : MonoBehaviour
 {
     public new AudioSource audio;
     public bool once = true;
+    public float delay = 0f;
 
     private bool audioPlayed = false;
 
@@ -11,7 +12,7 @@ public class PlayAudioOnTrigger : MonoBehaviour
     {
         if (!(once && audioPlayed))
         {
-            audio.Play(0);
+            audio.PlayDelayed(delay);
             audioPlayed = true;
         }
     }

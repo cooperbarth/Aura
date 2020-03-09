@@ -21,7 +21,7 @@ public class IntroSequence : MonoBehaviour
     void Start()
     {
         Toggle(false);
-        intro.PlayDelayed(Convert.ToInt32(startTimeSeconds * 1000));
+        intro.PlayDelayed(Convert.ToInt32(startTimeSeconds));
     }
 
     async void Update()
