@@ -1,29 +1,29 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-public class FadeMusic : MonoBehaviour
+public class FadeMusicIn : MonoBehaviour
 {
-    public float volumeLevel = 0f;
+    public float volumeLevel = 1f;
     public new AudioSource[] audio;
 
     public async void OnTriggerEnter(Collider other)
     {
+        foreach (AudioSource track in audio)
+        {
+            track.enabled = true;
+        }
         while (true)
         {
-            bool anyPlaying = false;
+            bool anyNotDone = false;
             foreach (AudioSource track in audio)
             {
-                if (track.volume > 0)
+                if (track.volume < volumeLevel)
                 {
-                    anyPlaying = true;
-                    track.volume -= 0.025f;
-                }
-                else
-                {
-                    track.enabled = false;
+                    anyNotDone = true;
+                    track.volume += 0.025f;
                 }
             }
-            if (!anyPlaying)
+            if (!anyNotDone)
             {
                 break;
             }
