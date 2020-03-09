@@ -7,7 +7,7 @@ public class SequenceTrigger : MonoBehaviour
     public bool once = true;
     public AudioSource failureSound;
 
-    private readonly int[] correct = new int[] { 0, 1, 0, 2, 0, 1, 0, 1, 2, 1, 0 };
+    private readonly int[] correct = new int[] { 0, 1, 0, 2, 0, 2, 0, 1, 2, 1, 0 };
     private int[] sequence;
     private int currentIndex = 0;
     private bool completed = false;
