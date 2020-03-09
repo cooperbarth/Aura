@@ -11,7 +11,10 @@ public class TrafficLight : MonoBehaviour
 
     public void Start()
     {
-        renderer = GetComponent<Renderer>();
+        while (!renderer)
+        {
+            renderer = GetComponent<Renderer>();
+        }
         SwitchColor();
     }
 
@@ -19,14 +22,17 @@ public class TrafficLight : MonoBehaviour
     {
         while (true)
         {
-            renderer.material = materials[0];
+            if (renderer) { renderer.material = materials[0]; }
             await Task.Delay(Convert.ToInt32(4000));
-            renderer.material = materials[1];
+            if (renderer) { renderer.material = materials[1]; }
             await Task.Delay(Convert.ToInt32(1500));
-            renderer.material = materials[2];
-            RotatePlatforms(true);
-            await Task.Delay(Convert.ToInt32(500));
-            RotatePlatforms(false);
+            if (renderer)
+            {
+                renderer.material = materials[2];
+                RotatePlatforms(true);
+                await Task.Delay(Convert.ToInt32(500));
+                RotatePlatforms(false);
+            }
         }
     }
 
@@ -36,14 +42,20 @@ public class TrafficLight : MonoBehaviour
         {
             foreach(GameObject obj in platforms)
             {
-                obj.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                if (obj)
+                {
+                    obj.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                }
             }
         }
         else
         {
             foreach(GameObject obj in platforms)
             {
-                obj.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                if (obj)
+                {
+                    obj.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                }
             }
         }
     }

@@ -51,7 +51,7 @@ public class SequenceTrigger : MonoBehaviour
 
     private void PlaySound()
     {
-        failureSound.Play(0);
+        failureSound.Play();
     }
 
     private void PerformAction()

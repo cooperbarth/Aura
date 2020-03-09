@@ -5,6 +5,7 @@ public class MoveFinalPlatform : MoveAction
     public GameObject obj;
     public GameObject[] objectsToActivate;
     public AudioSource finalVoiceover;
+    public GameObject door;
 
     private bool activated = false;
 
@@ -17,7 +18,7 @@ public class MoveFinalPlatform : MoveAction
                                                     target,
                                                     step);
 
-        if (Vector3.Distance(obj.transform.position, target) < 0.001f)
+        if (!finalVoiceover.isPlaying)
         {
             Cease();
             onCompletion();
@@ -38,7 +39,7 @@ public class MoveFinalPlatform : MoveAction
         target.z += delta_z;
 
         // Play final Voiceover
-        finalVoiceover.Play(2000);
+        finalVoiceover.Play(5000);
     }
 
     public override void Cease()
@@ -53,6 +54,11 @@ public class MoveFinalPlatform : MoveAction
 
     public void ActivateObjects()
     {
+        door.transform.position = new Vector3(
+            door.transform.position.x,
+            door.transform.position.y + 9,
+            door.transform.position.z
+        );
         foreach (GameObject o in objectsToActivate)
         {
             MeshRenderer mesh = o.GetComponent<MeshRenderer>();
