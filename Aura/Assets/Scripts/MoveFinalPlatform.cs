@@ -7,6 +7,7 @@ public class MoveFinalPlatform : MoveAction
     public AudioSource finalVoiceover;
     public GameObject[] objectsToDisable;
     public GameObject door;
+    public AudioSource radio;
 
     public AuraDetach ret;
     public GameObject keybinds;
@@ -33,6 +34,8 @@ public class MoveFinalPlatform : MoveAction
     {
         if (activated) { return; }
 
+        radio.Stop();
+        radio.enabled = false;
         ActivateObjects();
         activated = true;
         moving = true;
@@ -44,7 +47,7 @@ public class MoveFinalPlatform : MoveAction
         target.z += delta_z;
 
         // Play final Voiceover
-        finalVoiceover.PlayDelayed(5);
+        finalVoiceover.PlayDelayed(3);
     }
 
     public override void Cease()

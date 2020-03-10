@@ -1822,7 +1822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &196532199
 Transform:
   m_ObjectHideFlags: 0
@@ -9232,6 +9232,7 @@ MonoBehaviour:
   objectsToDisable:
   - {fileID: 9159537069048668270}
   door: {fileID: 1506011143}
+  radio: {fileID: 9159537069048668274}
   ret: {fileID: 9085631}
   keybinds: {fileID: 9085629}
 --- !u!1 &706976379
@@ -15071,7 +15072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1369379383
 Transform:
   m_ObjectHideFlags: 0
@@ -20617,7 +20618,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92e4d5f834a804e08934a0e88e04e447, type: 2}
+  - {fileID: 2100000, guid: ef2b6abe68c3d4d088dcbc44fe874e71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27088,7 +27089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3978875811767350159
 Transform:
   m_ObjectHideFlags: 0
