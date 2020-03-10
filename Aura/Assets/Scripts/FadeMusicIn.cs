@@ -11,6 +11,7 @@ public class FadeMusicIn : MonoBehaviour
         foreach (AudioSource track in audio)
         {
             track.enabled = true;
+            track.volume = 0;
         }
         while (true)
         {

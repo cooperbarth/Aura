@@ -67,7 +67,10 @@ public class MoveFinalPlatform : MoveAction
         foreach (GameObject o in objectsToActivate)
         {
             MeshRenderer mesh = o.GetComponent<MeshRenderer>();
-            mesh.enabled = false;
+            if (mesh)
+            {
+                mesh.enabled = false;
+            }
             o.SetActive(true);
         }
     }

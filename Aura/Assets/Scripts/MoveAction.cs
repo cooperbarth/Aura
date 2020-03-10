@@ -7,6 +7,7 @@ public class MoveAction : Action
     public float delta_z;
     public float moveSpeed = 1.0f;
     public bool once = true;
+    public bool returnToOrigin = true;
     public Action[] completionActions;
 
     internal bool moving = false;
@@ -48,8 +49,11 @@ public class MoveAction : Action
     override public void Cease()
     {
         // Calculate ending position
-        target = originalPosition;
-        moving = true;
+        if (returnToOrigin)
+        {
+            target = originalPosition;
+            moving = true;
+        }
     }
 
     public override void onCompletion()
