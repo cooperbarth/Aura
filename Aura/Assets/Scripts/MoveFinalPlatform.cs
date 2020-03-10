@@ -5,7 +5,11 @@ public class MoveFinalPlatform : MoveAction
     public GameObject obj;
     public GameObject[] objectsToActivate;
     public AudioSource finalVoiceover;
+    public GameObject[] objectsToDisable;
     public GameObject door;
+
+    public AuraDetach ret;
+    public GameObject keybinds;
 
     private bool activated = false;
 
@@ -28,6 +32,7 @@ public class MoveFinalPlatform : MoveAction
     public override void Trigger()
     {
         if (activated) { return; }
+
         ActivateObjects();
         activated = true;
         moving = true;
@@ -39,7 +44,7 @@ public class MoveFinalPlatform : MoveAction
         target.z += delta_z;
 
         // Play final Voiceover
-        finalVoiceover.Play(5000);
+        finalVoiceover.PlayDelayed(5);
     }
 
     public override void Cease()
@@ -52,7 +57,7 @@ public class MoveFinalPlatform : MoveAction
         Application.Quit();
     }
 
-    public void ActivateObjects()
+    private void ActivateObjects()
     {
         door.transform.position = new Vector3(
             door.transform.position.x,

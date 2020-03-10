@@ -45,11 +45,7 @@ public class AuraDetach : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && !attached)
         {
-            RecallAura();
-            playerHasControl = true;
-            ToggleAttached();
-            TogglePlayer(true);
-            ToggleAura(false);
+            PressR();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
@@ -61,6 +57,15 @@ public class AuraDetach : MonoBehaviour
             ToggleAura(playerHasControl);
             playerHasControl = !playerHasControl;
         }  
+    }
+
+    public void PressR()
+    {
+        RecallAura();
+        playerHasControl = true;
+        ToggleAttached();
+        TogglePlayer(true);
+        ToggleAura(false);
     }
 
     private void ToggleAttached()
