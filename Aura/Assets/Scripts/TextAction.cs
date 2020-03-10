@@ -5,6 +5,7 @@ using UnityEngine;
 public class TextAction : Action
 {
     public GameObject text;
+    public float waitTimeBeforeSeconds = 0f;
     public float waitTimeSeconds = 3f;
     public bool once = true;
     public Action[] completionActions;
@@ -29,6 +30,7 @@ public class TextAction : Action
     {
         if (!(once && shown))
         {
+            await Task.Delay(Convert.ToInt32(waitTimeBeforeSeconds * 1000));
             shown = true;
             text.SetActive(true);
             await Task.Delay(Convert.ToInt32(waitTimeSeconds * 1000));
