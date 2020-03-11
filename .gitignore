@@ -5,8 +5,6 @@
 Aura/[Ll]ibrary/
 Aura/[Tt]emp/
 Aura/[Oo]bj/
-# Aura/[Bb]uild/
-Aura/[Bb]uilds/
 Aura/[Ll]ogs/
 Aura/[Mm]emoryCaptures/
 
@@ -53,7 +51,7 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.app
+#*.app
 *.unitypackage
 
 # Crashlytics generated file
