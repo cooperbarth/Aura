@@ -5,7 +5,7 @@
 Aura/[Ll]ibrary/
 Aura/[Tt]emp/
 Aura/[Oo]bj/
-Aura/[Bb]uild/
+# Aura/[Bb]uild/
 Aura/[Bb]uilds/
 Aura/[Ll]ogs/
 Aura/[Mm]emoryCaptures/
